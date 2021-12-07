@@ -1,0 +1,76 @@
+[{
+    "satellite": {
+      "x":{
+        "sigma": 1,
+        "value": 2,
+        "noise": 0.1
+      },
+      "y":{
+        "sigma": 12,
+        "value": 23,
+        "noise": 0.21
+      },
+      "z":{
+        "sigma": 4,
+        "value": 0.6,
+        "noise": 5.1
+      },
+      "vx":{
+        "sigma": 56,
+        "value": 0.2,
+        "noise": 0.9
+      },
+      "vy":{
+        "sigma": 0.1,
+        "value": 20,
+        "noise": 0.75
+      },
+      "vz":{
+        "sigma": 3,
+        "value": 12,
+        "noise": 42
+      },
+      "cd":{
+        "sigma": 0.1,
+        "value": 2,
+        "noise": 0.21
+      },
+      "cr":{
+        "sigma": 11,
+        "value": 25,
+        "noise": 0.1
+      }
+    },
+    "gps_receiver": {
+      "x":{
+        "sigma": 1,
+        "value": 2,
+        "noise": 0.1
+      },
+      "y":{
+        "sigma": 1,
+        "value": 2,
+        "noise": 0.1
+      },
+      "z":{
+        "sigma": 1,
+        "value": 2,
+        "noise": 0.1
+      },
+      "vx":{
+        "sigma": 1,
+        "value": 2,
+        "noise": 0.1
+      },
+      "vy":{
+        "sigma": 1,
+        "value": 2,
+        "noise": 0.1
+      },
+      "vz":{
+        "sigma": 1,
+        "value": 2,
+        "noise": 0.1
+      }
+    }
+  }]

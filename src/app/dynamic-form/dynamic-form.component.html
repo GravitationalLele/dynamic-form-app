@@ -1,0 +1,75 @@
+<!-- <div style="margin: 35px">
+    <json-schema-form
+  [schema]="schema"
+  [layout]="layout"
+  [options]='jsonFormOptions'
+  [framework]="'bootstrap-4'"
+  (onSubmit)="onSubmit($event)"
+  (formSchema)="showFormSchemaFn($event)"
+  (formLayout)="showFormLayoutFn($event)">
+</json-schema-form> -->
+    <!-- </div>
+      <form>
+        <label>Description</label>
+      <input type="text" #description="ngModel" 
+            [(ngModel)]="todo.description" class="form-control" 
+                name="description" required="required" minlength="5">
+      </form>
+    <div> 
+    </div>-->
+<h3 *ngIf="load">{{category}}</h3>
+<div>
+  <div >
+    <form *ngIf="load==1" (ngSubmit)="provaForm()">
+      <div *ngFor = "let key of keys; let i = index">
+        <div>{{key}}: &nbsp;</div>
+        <input  [(ngModel)]="prova[key]" [readonly]="readonly[i]" [type]="provaType[i]" [name]="key"> 
+      </div>
+      <button type="submit">Prova</button>
+    </form>
+  </div>
+
+  <div>
+    <form *ngIf="mongoLoad==1" (ngSubmit)="provaMongoForm()">
+      <div *ngFor="let item of data|keyvalue:unsorted">
+        <div *ngIf="item.key!='id'">{{item.key}}: &nbsp;</div>
+        <div *ngIf="!(data[item.key]|keyvalue)  && item.key!='id'">
+          <input  [(ngModel)]="data[item.key]"  [name]="item.key">
+        </div>
+        <div *ngIf="(data[item.key]|keyvalue)">
+          <div *ngFor="let subitem of data[item.key] | keyvalue: unsorted">
+            <div>{{subitem.key}}: &nbsp;</div>
+            <div *ngIf="!(subitem.value|keyvalue)">
+              <input  [(ngModel)]="data[item.key][subitem.key]"  [name]="item.key+subitem.key">
+            </div>
+            <tr *ngIf="(subitem.value|keyvalue)">
+              <td *ngFor="let subsubitem of subitem.value | keyvalue: unsorted">
+                <div>{{subsubitem.key}}: &nbsp;</div>
+                <input  [(ngModel)]="data[item.key][subitem.key][subsubitem.key]"  type="number" [name]="item.key+subitem.key+subsubitem.key">
+              </td>
+            </tr>
+          </div> 
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+
+    </form>
+  </div>
+
+  <div [formGroup] = "myFormGroup">
+    <div formArrayName="provaArrayForm">
+      <div *ngFor="let a of provaArrayForm.controls; let i=index">
+        <input id="myFormName[i]" type="text" [formControlName]="i">
+      </div>
+    </div>
+    <tr formArrayName="subArrayForm">
+      <td *ngFor="let a of subArrayForm.controls; let i=index">
+        <input id="myFormName[i]" type="number" [formControlName]="i">
+      </td>
+    </tr>
+    <button (click)="addForm()">Add Form</button>
+    <button (click)="sendForm()">Submit</button>
+  </div>
+
+  
+</div>

@@ -1,0 +1,53 @@
+<div class="form-group">
+    <form *ngIf="load==1" [formGroup]="formGroup" (submit)="submit()">
+        <ul>
+        <ng-container
+            *ngTemplateOutlet="recursiveListTmpl; context:{ list: list, fullKeys: fullKeys }"
+        ></ng-container>
+        </ul>
+        <ng-template #recursiveListTmpl let-list="list" let-fullKeys="fullKeys">
+            <li *ngFor="let k of list|keyvalue">
+                {{ k.key }}
+                <div *ngIf="checkType(k.value)" >
+                <input  [type]=k.value [formControl]="formGroup.get(fullKeys[k.key])" class="form-control">
+                </div>
+                <ul *ngIf="!checkType(k.value)">
+                <ng-container
+                    *ngTemplateOutlet="recursiveListTmpl; context:{ list: list[k.key], fullKeys: fullKeys[k.key] }"
+                ></ng-container>
+                </ul>
+            </li>
+            </ng-template>
+            <button type="submit">Submit</button>
+        </form>
+</div>
+
+  
+
+  <!-- <form [formGroup]="formGroup" (submit)="submit()">
+    <div *ngFor="let k of generalKeys|keyvalue">
+        {{k.key}}:
+        <div *ngIf="checkType(k.value)">
+            <input [formControlName]="k.key">
+        </div>
+        <div *ngIf="!checkType(k.value)">
+            <div [formGroupName]="k.key" >
+                <div *ngFor="let j of generalKeys[k.key]|keyvalue">
+                    {{j.key}}:
+                    <div *ngIf="checkType(j.value)">
+                        <input [formControlName]="j.key">
+                    </div>
+                    <div *ngIf="!checkType(j.value)">
+                        <div [formGroupName]="j.key" >
+                            <div *ngFor="let i of generalKeys[k.key][j.key]|keyvalue">
+                                {{i.key}}:
+                                <input [formControlName]="i.key">   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form> -->

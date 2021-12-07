@@ -1,0 +1,19 @@
+<div >
+    <form [formGroup]="form" (ngSubmit)="!form.invalid && onSubmit(model)">
+        <formly-form [form]="form" [fields]="fields"></formly-form>
+        <formly-form [form]="form" [fields]="satFields" [model]="model"></formly-form>
+        <formly-form [form]="form" [fields]="gpsFields"></formly-form>
+        <formly-form [form]="form" [fields]="noiseFields"></formly-form>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+</div>
+<!-- <div  >
+    <form [formGroup]="newForm" >
+        <formly-form [form]="newForm" [fields]="formConf" ></formly-form>
+      </form>
+</div> -->
+
+<div *ngIf="dataSeries">
+    <app-my-chart [dataSeries]="dataSeries[0]" [chartTitle]="title1"></app-my-chart>
+    <app-my-chart [dataSeries]="dataSeries[1]" [chartTitle]="title2"></app-my-chart>
+</div>

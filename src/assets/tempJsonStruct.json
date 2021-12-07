@@ -1,0 +1,279 @@
+[
+    {
+        "key": "satellite",
+        "wrappers": ["panel"],
+        "templateOptions": { "label": "Satellite" },
+        "fieldGroup": [
+          {
+            "fieldGroupClassName": "row",
+            "fieldGroup": [
+              {
+                "key": "x",
+                "className": "col-4",
+                "wrappers": ["panel"],
+                "templateOptions": { "label": "X", "type":"", "required":false },
+                "fieldGroup": [
+                  {
+                    "fieldGroupClassName": "row",
+                    "fieldGroup": [
+                      {
+                        "key": "sigma",
+                        "type": "input",
+                        "className": "col-4",
+                        "wrappers":null,
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Sigma"
+                        },
+                        "fieldGroup":null
+                      },
+                      {
+                        "key": "value",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Value"
+                        }
+                      },
+                      {
+                        "key": "noise",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Noise"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "key": "y",
+                "className": "col-4",
+                "wrappers": ["panel"],
+                "templateOptions": { "label": "Y" },
+                "fieldGroup": [
+                  {
+                    "fieldGroupClassName": "row",
+                    "fieldGroup": [
+                      {
+                        "key": "sigma",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Sigma"
+                        }
+                      },
+                      {
+                        "key": "value",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Value"
+                        }
+                      },
+                      {
+                        "key": "noise",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Noise"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "key": "z",
+                "className": "col-4",
+                "wrappers": ["panel"],
+                "templateOptions": { "label": "Z" },
+                "fieldGroup": [
+                  {
+                    "fieldGroupClassName": "row",
+                    "fieldGroup": [
+                      {
+                        "key": "sigma",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Sigma"
+                        }
+                      },
+                      {
+                        "key": "value",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Value"
+                        }
+                      },
+                      {
+                        "key": "noise",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Noise"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "fieldGroupClassName": "row",
+            "fieldGroup": [
+              {
+                "key": "vx",
+                "className": "col-4",
+                "wrappers": ["panel"],
+                "templateOptions": { "label": "Vx" },
+                "fieldGroup": [
+                  {
+                    "fieldGroupClassName": "row",
+                    "fieldGroup": [
+                      {
+                        "key": "sigma",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Sigma"
+                        }
+                      },
+                      {
+                        "key": "value",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Value"
+                        }
+                      },
+                      {
+                        "key": "noise",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Noise"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "key": "vy",
+                "className": "col-4",
+                "wrappers": ["panel"],
+                "templateOptions": { "label": "Vy" },
+                "fieldGroup": [
+                  {
+                    "fieldGroupClassName": "row",
+                    "fieldGroup": [
+                      {
+                        "key": "sigma",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Sigma"
+                        }
+                      },
+                      {
+                        "key": "value",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Value"
+                        }
+                      },
+                      {
+                        "key": "noise",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Noise"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "key": "vz",
+                "className": "col-4",
+                "wrappers": ["panel"],
+                "templateOptions": { "label": "Vz" },
+                "fieldGroup": [
+                  {
+                    "fieldGroupClassName": "row",
+                    "fieldGroup": [
+                      {
+                        "key": "sigma",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Sigma"
+                        }
+                      },
+                      {
+                        "key": "value",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Value"
+                        }
+                      },
+                      {
+                        "key": "noise",
+                        "type": "input",
+                        "className": "col-4",
+                        "templateOptions": {
+                          "required": true,
+                          "type": "number",
+                          "label": "Noise"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+]
