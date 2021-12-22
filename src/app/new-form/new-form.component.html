@@ -1,19 +1,19 @@
 <div >
-    <form [formGroup]="form" (ngSubmit)="!form.invalid && onSubmit(model)">
-        <formly-form [form]="form" [fields]="fields"></formly-form>
-        <formly-form [form]="form" [fields]="satFields" [model]="model"></formly-form>
-        <formly-form [form]="form" [fields]="gpsFields"></formly-form>
-        <formly-form [form]="form" [fields]="noiseFields"></formly-form>
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
+  <form [formGroup]="form" (ngSubmit)="!form.invalid && onSubmit()">
+    <formly-form [form]="form" [fields]="selectFields" [model]="sat_model" (modelChange)="change($event)"></formly-form>
+    <mat-tab-group *ngIf="tabs.length>0">
+      <mat-tab *ngFor="let tab of tabs" [label]="tab">
+        <formly-form [form]="form" [fields]="fields[tab]" [model]="sat_model"></formly-form>
+      </mat-tab>
+    </mat-tab-group>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
 </div>
+
 <!-- <div  >
     <form [formGroup]="newForm" >
         <formly-form [form]="newForm" [fields]="formConf" ></formly-form>
       </form>
 </div> -->
 
-<div *ngIf="dataSeries">
-    <app-my-chart [dataSeries]="dataSeries[0]" [chartTitle]="title1"></app-my-chart>
-    <app-my-chart [dataSeries]="dataSeries[1]" [chartTitle]="title2"></app-my-chart>
-</div>
+

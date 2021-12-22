@@ -1,0 +1,10 @@
+<h1>DB Manager</h1>
+
+<div>
+    <app-my-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-my-table>
+
+    <form [formGroup]="provaForm" (ngSubmit)="!provaForm.invalid && onSubmit()">
+        <formly-form [form]="provaForm" [model]="provaModel" [fields]="provaFields"></formly-form>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>

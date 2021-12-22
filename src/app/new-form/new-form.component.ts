@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { FormlyJsonschema } from '@ngx-formly/core/json-schema';
-import { dataSeries } from "../../assets/data-series";
+import { DataService } from '../service/data-form.service';
 
 @Component({
   selector: 'app-new-form',
@@ -12,74 +12,106 @@ import { dataSeries } from "../../assets/data-series";
 })
 export class NewFormComponent implements OnInit {
   form = new FormGroup({});
-  fields: FormlyFieldConfig[];
+  selectFields: FormlyFieldConfig[];
   formConf: FormlyFieldConfig[]=[];
-  satFields: FormlyFieldConfig[];
-  gpsFields: FormlyFieldConfig[];
-  noiseFields: FormlyFieldConfig[];
-  model;
-  dataSeries;
-  title1=["Semi-major axis [km]", "a[km]"]
-  title2=["Inclination", "i[°]"]
-    
-  constructor( private http: HttpClient,) { 
+  fields1: FormlyFieldConfig[];
+  fields2: FormlyFieldConfig[];
+  fields3: FormlyFieldConfig[];
+  fields=[];
+  tabs = [];
+  sat_model;
+  gps_model;
+  operationType = "Navigation Kalmann";
+  constructor( private http: HttpClient, private dataService: DataService) { 
   }
-
 
   ngOnInit(): void {
     // this.formConf.push(this.createSingleForm('prova', 'input', 'col-4', true, 'number', "Prova", "Questo è un placeholder"));
     // console.log(this.formConf)
-    this.dataSeries=dataSeries;
 
-    this.http.get<FormlyFieldConfig>("http://localhost:8080/provaJson").subscribe(data =>{
-      this.satFields=[data];
-      console.log(this.satFields)
-    })
 
-    this.http.get<FormlyFieldConfig>("http://localhost:8080/provaGPSData").subscribe(data =>{
-      this.gpsFields=[data];
-      console.log(this.gpsFields)
-    })
-
-    this.http.get<FormlyFieldConfig>("http://localhost:8080/provaSelectForm").subscribe(data =>{
-      this.fields=[data];
+    this.dataService.getData("sat_data").subscribe(data => {
+      this.sat_model=data;
       console.log(data)
+      //this.changeForm(this.model)
     })
 
-    this.http.get<FormlyFieldConfig>("http://localhost:8080/mesurementProperties").subscribe(data =>{
-      this.noiseFields=[data];
-      console.log(data)
+    this.dataService.getFormFields("selectForm").subscribe(data =>{
+      this.selectFields=[data];
     })
+    this.initializeForms()
 
-    
-    // this.http.get<FormlyFieldConfig[]>('assets/simple.json').subscribe(data => {
-    //   this.fields=data;
+
+//    this.dataService.getFormFields("nuovaProva").subscribe(data =>{
+    // this.dataService.getFormFields("estimatedParameters").subscribe(data =>{
     //   console.log(data)
+    //   this.noiseFields=[data];
     // })
-    this.http.get('assets/model.json').subscribe(data => {
-      this.model=data;
-    })
 
+    // this.dataService.getData("gps_data").subscribe(data => {
+    //   this.gps_model=data;
+    //   console.log(this.gps_model)
+    // })
     
   }
 
 
-  onSubmit(model) {
+  onSubmit() {
     console.log(this.form.value);
   }
 
+  getFormData(formType){
+    if(formType=="Navigation Kalmann"){
+      this.dataService.getFormFieldsArray("inputForm").subscribe(data =>{
+        this.fields1=[data[0]];
+        this.fields2=null;
+        console.log(this.fields1)
+      })
+    }else if(formType=="Navigation Batch"){
+      this.dataService.getFormFieldsArray("inputForm").subscribe(data =>{
+        this.fields1=null;
+        this.fields2=[data[1]];
+      })
+    }
+    
+  }
 
+  changeForm(value){
+    this.getFormData(value.operationType)
+    console.log(value.operationType)
+  }
 
-  // createSingleForm(key: string, type: string, className: string, required: boolean, template_type: string, label: string, placeholder: string): FormlyFieldConfig {
-  //   let myForm: FormlyFieldConfig = {templateOptions:{}};
-  //   myForm.key=key;
-  //   myForm.type=type;
-  //   myForm.className=className;
-  //   myForm.templateOptions.required=required;
-  //   myForm.templateOptions.type=template_type;
-  //   myForm.templateOptions.label=label
-  //   myForm.templateOptions.placeholder=placeholder
+  change(value){
+    this.operationType = value.operationType;
+    this.initializeForms()
+  }
 
-  //   return myForm
-  // }
+  initializeForms(){
+    this.tabs=[];
+    this.fields=[];
+
+    this.dataService.getFormFields("satelliteDataForm").subscribe(data =>{
+      this.tabs[0] = data.templateOptions.label;
+      this.fields[this.tabs[0]]=[data];
+    })
+    this.dataService.getFormFields("gpsReceiverForm").subscribe(data =>{
+      this.tabs[1] = data.templateOptions.label;
+      this.fields[this.tabs[1]]=[data];
+    })
+    this.dataService.getFormFields("mesurementProperties").subscribe(data =>{
+      this.tabs[2] = data.templateOptions.label;
+      this.fields[this.tabs[2]]=[data];
+    })
+    if(this.operationType=="Navigation Kalmann"){
+
+      
+    }else if(this.operationType=="Navigation Batch"){
+      this.dataService.getFormFields("thrustProperties").subscribe(data =>{
+        this.tabs[3] = data.templateOptions.label;
+        this.fields[this.tabs[3]]=[data];
+      })
+    }
+
+  }
+
 }

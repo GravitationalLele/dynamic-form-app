@@ -26,7 +26,6 @@ export class MyChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.chartTitle)
     this.initChartData();
   }
 
@@ -91,7 +90,7 @@ export class MyChartComponent implements OnInit {
       shared: false,
       y: {
         formatter: function(val) {
-          return (val / 1000000).toFixed(0);
+          return (val / 1000).toFixed(0);
         }
       }
     };

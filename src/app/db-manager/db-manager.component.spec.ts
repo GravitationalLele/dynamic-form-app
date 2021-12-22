@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyReactiveFormComponent } from './my-reactive-form.component';
+import { DbManagerComponent } from './db-manager.component';
 
-describe('MyReactiveFormComponent', () => {
-  let component: MyReactiveFormComponent;
-  let fixture: ComponentFixture<MyReactiveFormComponent>;
+describe('DbManagerComponent', () => {
+  let component: DbManagerComponent;
+  let fixture: ComponentFixture<DbManagerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MyReactiveFormComponent ]
+      declarations: [ DbManagerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyReactiveFormComponent);
+    fixture = TestBed.createComponent(DbManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

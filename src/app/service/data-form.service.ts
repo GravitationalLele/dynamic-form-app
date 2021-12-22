@@ -1,28 +1,43 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataFormService {
+export class DataService {
 
   constructor(
     private http:HttpClient
   ) {}
 
-  getData(){
-    return this.http.get<any>('http://localhost:8080/profile/coordinates', {
-      headers: new HttpHeaders()
-      .set('Accept', 'application/schema+json')
-      
-    })
+
+  getFormFieldsArray(field_name){
+    return this.http.get<FormlyFieldConfig[]>("http://localhost:8080/"+field_name)
   }
 
-  getCustomData(){
-    return this.http.get<any>('http://localhost:8080/prova')
+  getFormFields(field_name){
+    return this.http.get<FormlyFieldConfig>("http://localhost:8080/"+field_name)
   }
 
-  getMongoData(){
-    return this.http.get<any>('http://localhost:8080/mongo/get')
+  getData(data_name){
+    return this.http.get("http://localhost:8080/"+data_name)
   }
+
+  getChartData(){
+    return this.http.get<String[]>("http://localhost:8080/chart_data")
+  }
+
+  getProvaFields(){
+    return this.http.get<FormlyFieldConfig>("http://localhost:8080/getProvaStructureFromDB")
+  }
+
+  getProvaData(){
+    return this.http.get<Array<any>>("http://localhost:8080/getProvaDataFromDB")
+  }
+
+  postProvaData(body){
+    return this.http.post<Array<any>>("http://localhost:8080/postProvaDataFromDB", body)
+  }
+
 }

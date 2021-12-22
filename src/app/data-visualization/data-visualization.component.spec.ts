@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NestedFormComponent } from './nested-form.component';
+import { DataVisualizationComponent } from './data-visualization.component';
 
-describe('NestedFormComponent', () => {
-  let component: NestedFormComponent;
-  let fixture: ComponentFixture<NestedFormComponent>;
+describe('DataVisualizationComponent', () => {
+  let component: DataVisualizationComponent;
+  let fixture: ComponentFixture<DataVisualizationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NestedFormComponent ]
+      declarations: [ DataVisualizationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NestedFormComponent);
+    fixture = TestBed.createComponent(DataVisualizationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

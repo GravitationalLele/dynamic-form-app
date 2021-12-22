@@ -1,36 +1,41 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {MatTableModule} from '@angular/material/table';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
-import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { Bootstrap4FrameworkModule } from '@ajsf/bootstrap4';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { NestedFormComponent } from './nested-form/nested-form.component';
 import { NewFormComponent } from './new-form/new-form.component';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { MyReactiveFormComponent } from './my-reactive-form/my-reactive-form.component';
-import { ArrayTypeComponent } from './new-form/array.type';
-import { ObjectTypeComponent } from './new-form/object.type';
-import { PanelWrapperComponent } from './new-form/panel-wrapper.component';
+import { ArrayTypeComponent } from './new-form/control_types/array.type';
+import { ObjectTypeComponent } from './new-form/control_types/object.type';
+import { PanelWrapperComponent } from './new-form/control_types/panel-wrapper.component';
 import { MyChartComponent } from './chart/my-chart.component';
+import { DataVisualizationComponent } from './data-visualization/data-visualization.component';
+import { DbManagerComponent } from './db-manager/db-manager.component';
+import { MenuComponent } from './menu/menu.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyTableComponent } from './my-table/my-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DynamicFormComponent,
-    NestedFormComponent,
     NewFormComponent,
     MyChartComponent,
-    MyReactiveFormComponent,
-    PanelWrapperComponent
+    PanelWrapperComponent,
+    DataVisualizationComponent,
+    DbManagerComponent,
+    MenuComponent,
+    MyTableComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     Bootstrap4FrameworkModule,
@@ -38,6 +43,8 @@ import { MyChartComponent } from './chart/my-chart.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     NgApexchartsModule,
+    MatTabsModule,
+    MatTableModule,
     FormlyModule.forRoot({
       types: [
         {
@@ -57,6 +64,15 @@ import { MyChartComponent } from './chart/my-chart.component';
             templateOptions: {
               type: 'number',
               step: 1
+            },
+          },
+        },
+        {
+          name: 'string',
+          extends: 'input',
+          defaultOptions: {
+            templateOptions: {
+              type: 'text',
             },
           },
         },
