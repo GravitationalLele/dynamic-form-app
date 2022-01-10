@@ -84,6 +84,7 @@ export class NewFormComponent implements OnInit {
   change(value){
     this.operationType = value.operationType;
     this.initializeForms()
+    console.log(value)
   }
 
   initializeForms(){

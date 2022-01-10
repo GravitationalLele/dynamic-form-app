@@ -21,6 +21,7 @@ import { MenuComponent } from './menu/menu.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyTableComponent } from './my-table/my-table.component';
+import { DataInputFormComponent } from './data-input-form/data-input-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MyTableComponent } from './my-table/my-table.component';
     DataVisualizationComponent,
     DbManagerComponent,
     MenuComponent,
-    MyTableComponent
+    MyTableComponent,
+    DataInputFormComponent
   ],
   imports: [
     BrowserModule,
