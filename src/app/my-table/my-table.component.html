@@ -1,10 +1,28 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
       <th mat-header-cell *matHeaderCellDef> {{col}} </th>
       <td mat-cell *matCellDef="let element"> {{element[col]}} </td>
     </ng-container>
-  
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let col of displayedColumns">{{col}}</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+ 
+    <tbody>
+      <tr *ngFor="let data of dataSource">
+        <td *ngFor="let col of displayedColumns">{{data[col]}}</td>
+        <td><button (click)="prova(data.id)" class="btn btn-success">Edit</button></td>
+        <td><button (click)="deleteEntry(data.id)" class="btn btn-warning">Delete</button></td>
+      </tr>
+    </tbody>
+
   </table>
-  
+

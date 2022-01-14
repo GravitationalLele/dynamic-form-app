@@ -22,6 +22,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyTableComponent } from './my-table/my-table.component';
 import { DataInputFormComponent } from './data-input-form/data-input-form.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { DataInputFormComponent } from './data-input-form/data-input-form.compon
     NgApexchartsModule,
     MatTabsModule,
     MatTableModule,
+    MatSelectModule,
     FormlyModule.forRoot({
       types: [
         {

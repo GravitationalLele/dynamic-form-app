@@ -1,7 +1,16 @@
 <h1>DB Manager</h1>
-
+<mat-form-field appearance="fill">
+    <mat-label>Entity</mat-label>
+    <mat-select [(value)]="selected" (selectionChange)="ngOnInit()">
+        <mat-option value="prova">Prova</mat-option>
+        <mat-option value="parameters">Parameters</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
 <div>
-    <app-my-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"></app-my-table>
+    <div *ngIf="displayedColumns">
+        <app-my-table [dataSource]="dataSource" (newItemEvent)="deleteEntry($event)" [displayedColumns]="displayedColumns"></app-my-table>
+    </div>
 
     <form [formGroup]="provaForm" (ngSubmit)="!provaForm.invalid && onSubmit()">
         <formly-form [form]="provaForm" [model]="provaModel" [fields]="provaFields"></formly-form>

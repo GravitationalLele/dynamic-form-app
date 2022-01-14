@@ -29,6 +29,7 @@ export class NewFormComponent implements OnInit {
     // this.formConf.push(this.createSingleForm('prova', 'input', 'col-4', true, 'number', "Prova", "Questo è un placeholder"));
     // console.log(this.formConf)
 
+    console.log(this.fields)
 
     this.dataService.getData("sat_data").subscribe(data => {
       this.sat_model=data;
@@ -39,7 +40,7 @@ export class NewFormComponent implements OnInit {
     this.dataService.getFormFields("selectForm").subscribe(data =>{
       this.selectFields=[data];
     })
-    this.initializeForms()
+    this.initializeForms();
 
 
 //    this.dataService.getFormFields("nuovaProva").subscribe(data =>{

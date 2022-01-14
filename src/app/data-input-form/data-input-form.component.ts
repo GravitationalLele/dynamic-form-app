@@ -61,6 +61,8 @@ export class DataInputFormComponent implements OnInit {
     this.dataService.getFormFields("mesurementProperties").subscribe(data =>{
       this.tabs[2] = data.templateOptions.label;
       this.fields[this.tabs[2]]=[data];
+      console.log(this.fields)
+
     })
     if(this.operationType=="Navigation Kalmann"){
 
